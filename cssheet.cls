@@ -3,7 +3,7 @@
 % cssheet.cls
 %
 % author: Christian Spannagel
-% version: 1.03
+% version: 1.04
 % license: CC0
 %
 %--------------------------------------------------------------------------------------------------------------
@@ -103,6 +103,11 @@
 \newcommand{\printsubtitle}{%
    \begin{center}
    {\Large\textbf{\thesubtitle}}
+   \end{center}
+}
+\newcommand{\printdate}{%
+    \begin{center}
+   \thedate
    \end{center}
 }
 
