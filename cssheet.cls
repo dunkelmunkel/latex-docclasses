@@ -3,7 +3,7 @@
 % cssheet.cls
 %
 % author: Christian Spannagel
-% version: 1.04
+% version: 1.05
 % license: CC0
 %
 %--------------------------------------------------------------------------------------------------------------
@@ -88,8 +88,8 @@
 \bibliography{../literature.bib}
 %\bibliographystyle{plain}
 \nocite{*}
-%\defbibheading{references}[\refname]{\subsection{#1}
-%   \markboth{#1}{#1}}
+\defbibheading{references}[\refname]{\subsection{#1}
+    \markboth{#1}{#1}}
 
 
 % title page
