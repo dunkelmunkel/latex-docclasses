@@ -88,7 +88,7 @@
 \bibliography{../literature.bib}
 %\bibliographystyle{plain}
 \nocite{*}
-\defbibheading{references}[\refname]{\subsection{#1}
+\defbibheading{references}[\refname]{\section*{#1}
     \markboth{#1}{#1}}
 
 
