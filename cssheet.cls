@@ -3,7 +3,7 @@
 % cssheet.cls
 %
 % author: Christian Spannagel
-% version: 1.06
+% version: 1.07
 % license: CC0
 %
 %--------------------------------------------------------------------------------------------------------------
@@ -17,6 +17,7 @@
 \RequirePackage[a4paper, left=25mm, right=25mm, top=30mm, bottom=25mm, headheight=30mm]{geometry}
 \RequirePackage{ngerman}
 \RequirePackage{textcomp}
+\RequirePackage{amssymb}
 \RequirePackage{comment}
 \RequirePackage{enumerate}
 \RequirePackage{graphicx}
