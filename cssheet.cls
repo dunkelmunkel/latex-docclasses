@@ -3,7 +3,7 @@
 % cssheet.cls
 %
 % author: Christian Spannagel
-% version: 1.07
+% version: 1.08
 % license: CC0
 %
 %--------------------------------------------------------------------------------------------------------------
@@ -18,6 +18,7 @@
 \RequirePackage{ngerman}
 \RequirePackage{textcomp}
 \RequirePackage{amssymb}
+\RequirePackage{amsmath}
 \RequirePackage{comment}
 \RequirePackage{enumerate}
 \RequirePackage{graphicx}
