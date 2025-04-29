@@ -19,6 +19,7 @@
 \RequirePackage{textcomp}
 \RequirePackage{amssymb}
 \RequirePackage{amsmath}
+\RequirePackage{siunitx}
 \RequirePackage{comment}
 \RequirePackage{enumerate}
 \RequirePackage{graphicx}
