@@ -35,7 +35,7 @@
 %\RequirePackage[singlespacing]{setspace}
 \RequirePackage[plainpages=false,pdfborder={0 0 0}]{hyperref}
 \newcommand{\inlinequote}[2]{\glqq{}#1\grqq{} #2}
-%\graphicspath{{../../logos/}}
+\graphicspath{{../../logos/}}
 
 \everymath{\displaystyle}
 
