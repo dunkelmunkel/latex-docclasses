@@ -2,38 +2,42 @@
 %
 % cssheet.cls
 %
-% author: Christian Spannagel
-% version: 1.08
+% author: Christian Spannagel edit by Marvin Ködding
+% version: 1.09
 % license: CC0
 %
 %--------------------------------------------------------------------------------------------------------------
 
 \ProvidesClass{cssheet}
 \PassOptionsToPackage{12pt,a4paper,oneside,ngerman}{article}
+\RequirePackage{amsmath, amssymb, amsfonts, amsthm}
 \LoadClassWithOptions{article}
 \ProcessOptions\relax
 \RequirePackage[T1]{fontenc}
 \RequirePackage[default]{raleway}
+%\RequirePackage{euler}
 \RequirePackage[a4paper, left=25mm, right=25mm, top=30mm, bottom=25mm, headheight=30mm]{geometry}
-\RequirePackage{ngerman}
+\RequirePackage[ngerman]{babel}
 \RequirePackage{textcomp}
-\RequirePackage{amssymb}
-\RequirePackage{amsmath}
-\RequirePackage{siunitx}
 \RequirePackage{comment}
 \RequirePackage{enumerate}
 \RequirePackage{graphicx}
+\RequirePackage{xparse}
 \RequirePackage{fancyhdr}
 \RequirePackage{epstopdf}
+\RequirePackage{multicol}
 \RequirePackage{titling}
-\RequirePackage{hwemoji}
+\RequirePackage{siunitx}
+\RequirePackage{tikz}
 \RequirePackage[backend=biber,style=apa]{biblatex}
 \DeclareFieldFormat{apacase}{#1}
 \DeclareLanguageMapping{ngerman}{ngerman-apa}
-\RequirePackage[singlespacing]{setspace}
+%\RequirePackage[singlespacing]{setspace}
 \RequirePackage[plainpages=false,pdfborder={0 0 0}]{hyperref}
 \newcommand{\inlinequote}[2]{\glqq{}#1\grqq{} #2}
-\graphicspath{{../../logos/}}
+%\graphicspath{{../../logos/}}
+
+\everymath{\displaystyle}
 
 %--------------------------------------------------------------------------------------------------------------
 % pagestyles
@@ -44,23 +48,23 @@
 \fancyhead[R]{\thelogo}
 \fancyfoot[C]{Seite \thepage}
 \fancypagestyle{docstyle}{%
-   \fancyhf{}
-   \renewcommand{\headrulewidth}{0pt}
-   \fancyfoot[C]{Seite \thepage}
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyfoot[C]{Seite \thepage}
 }
 \setlength{\parskip}{1 em} % fügt Leerzeile zwischen Absätzen ein
 \setlength{\parindent}{0 em}
 
 % hyperreferences
 \hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=blue,
-    pdftitle={Overleaf Example},
-    pdfpagemode=FullScreen,
-    }
-    
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=blue,
+	pdftitle={CSSheet},
+	pdfpagemode=FullScreen,
+}
+
 % commands for metadata
 \author{Prof. Dr. Christian Spannagel}
 \date{\today}
@@ -80,11 +84,11 @@
 \newcommand{\setlogo}[1]{\renewcommand{\thelogo}{#1}}
 
 \newcommand{\setpdfmetadata}{%
-    \hypersetup{pdfauthor={\theauthor},%
-    pdftitle={\thetitle},%
-    pdfsubject={\thesubject},%
-    pdfkeywords={\thekeywords}
-}
+	\hypersetup{pdfauthor={\theauthor},%
+		pdftitle={\thetitle},%
+		pdfsubject={\thesubject},%
+		pdfkeywords={\thekeywords}
+	}
 }
 
 
@@ -93,52 +97,62 @@
 %\bibliographystyle{plain}
 \nocite{*}
 \defbibheading{references}[\refname]{\section*{#1}
-    \markboth{#1}{#1}}
+	\markboth{#1}{#1}}
 
 
 % title page
 \newcommand{\printtitle}{%
-   \pagenumbering{arabic}
-   \pagestyle{fancy}
-   \begin{center}
-   {\LARGE\textbf{\thetitle}}
-   \end{center}
+	\pagenumbering{arabic}
+	\pagestyle{fancy}
+	\begin{center}
+		{\LARGE\textbf{\thetitle}}
+	\end{center}
 }
 \newcommand{\printsubtitle}{%
-   \begin{center}
-   {\Large\textbf{\thesubtitle}}
-   \end{center}
+	\begin{center}
+		{\Large\textbf{\thesubtitle}}
+	\end{center}
 }
 \newcommand{\printdate}{%
-    \begin{center}
-   \thedate
-   \end{center}
+	\begin{center}
+		\thedate
+	\end{center}
 }
 
 % footer elements
 \newcommand{\printlicense}{%
-  \includegraphics[height=10mm]{cc-zero.png}\\
-  \tiny{This document is subject to the Creative Commons Zero (CC0) License.\\ To create this document, we used \LaTeX{}.}
+	\includegraphics[height=10mm]{cc-zero.png}\\
+	\tiny{This document is subject to the Creative Commons Zero (CC0) License.\\ To create this document, we used \LaTeX{}.}
 }
 
 \newcommand{\printsocials}{%
-Christians Social Media Kanäle:\\
-BeReal: \url{https://bere.al/cspannagel}\\
-Bluesky: \url{https://bsky.app/profile/cspannagel.bsky.social}\\
-Discord: \url{https://tinyurl.com/chrisp-discord}\\
-Facebook: \url{https://www.facebook.com/chr.spannagel}\\
-GitHub:  \url{https://github.com/dunkelmunkel}\\
-Instagram: \url{https://www.instagram.com/dunkelmunkel/}\\
-LinkedIn: \url{https://www.linkedin.com/in/christian-spannagel-31b7b4a1/}\\
-Mastodon: \url{https://scholar.social/@cspannagel}\\
-Snapchat: \url{https://www.snapchat.com/add/spannagelc}\\
-Telegram: \url{https://t.me/cspannagel}\\
-Tellonym: \url{https://tellonym.me/christian.spannagel}\\
-TikTok: \url{https://www.tiktok.com/@_cspannagel_}\\
-Threads: \url{https://www.threads.net/@dunkelmunkel}\\
-Twitch: \url{https://www.twitch.tv/cspannagel}\\
-X/Twitter: \url{https://twitter.com/dunkelmunkel}\\
-Youtube: \url{https://www.youtube.com/pharithmetik}
+	Christians Social Media Kanäle:\\
+	BeReal: \url{https://bere.al/cspannagel}\\
+	Bluesky: \url{https://bsky.app/profile/cspannagel.bsky.social}\\
+	Discord: \url{https://tinyurl.com/chrisp-discord}\\
+	Facebook: \url{https://www.facebook.com/chr.spannagel}\\
+	GitHub:  \url{https://github.com/dunkelmunkel}\\
+	Instagram: \url{https://www.instagram.com/dunkelmunkel/}\\
+	LinkedIn: \url{https://www.linkedin.com/in/christian-spannagel-31b7b4a1/}\\
+	Mastodon: \url{https://scholar.social/@cspannagel}\\
+	Snapchat: \url{https://www.snapchat.com/add/spannagelc}\\
+	Telegram: \url{https://t.me/cspannagel}\\
+	Tellonym: \url{https://tellonym.me/christian.spannagel}\\
+	TikTok: \url{https://www.tiktok.com/@_cspannagel_}\\
+	Threads: \url{https://www.threads.net/@dunkelmunkel}\\
+	Twitch: \url{https://www.twitch.tv/cspannagel}\\
+	X/Twitter: \url{https://twitter.com/dunkelmunkel}\\
+	Youtube: \url{https://www.youtube.com/pharithmetik}
 }
 
 
+\newcounter{Aufgabe}
+\NewDocumentEnvironment{aufgabe}{o}{%
+	\addtocounter{Aufgabe}{1}%
+	\textbf{Aufgabe \theAufgabe{}%
+		\IfNoValueTF{#1}{}{ (#1)}}
+	
+	\vspace*{-0.5em}
+}{\medskip}
+
+\renewcommand{\labelenumi}{{\alph{enumi}})}
