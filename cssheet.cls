@@ -22,6 +22,7 @@
 \RequirePackage{comment}
 \RequirePackage{enumerate}
 \RequirePackage{graphicx}
+\RequirePackage{float}
 \RequirePackage{xparse}
 \RequirePackage{fancyhdr}
 \RequirePackage{epstopdf}
