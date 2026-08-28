@@ -3,7 +3,7 @@
 % cssheet.cls
 %
 % author: Christian Spannagel edit by Marvin Ködding
-% version: 1.03
+% version: 1.09
 % license: CC0
 %
 %--------------------------------------------------------------------------------------------------------------
@@ -22,6 +22,7 @@
 \RequirePackage{comment}
 \RequirePackage{enumerate}
 \RequirePackage{graphicx}
+\RequirePackage{float}
 \RequirePackage{xparse}
 \RequirePackage{fancyhdr}
 \RequirePackage{epstopdf}
@@ -29,71 +30,40 @@
 \RequirePackage{titling}
 \RequirePackage{siunitx}
 \RequirePackage{tikz}
-\RequirePackage{fontspec, fontawesome5}
-\RequirePackage{marginnote}
-
-
-\RequirePackage{xcolor}
 \RequirePackage[backend=biber,style=apa]{biblatex}
 \DeclareFieldFormat{apacase}{#1}
 \DeclareLanguageMapping{ngerman}{ngerman-apa}
 %\RequirePackage[singlespacing]{setspace}
 \RequirePackage[plainpages=false,pdfborder={0 0 0}]{hyperref}
 \newcommand{\inlinequote}[2]{\glqq{}#1\grqq{} #2}
-\graphicspath{{../../logos/}}
 
 \everymath{\displaystyle}
-
-\RequirePackage{enumitem}
-\setlist[enumerate]{itemsep=2pt, topsep=-1pt, parsep=0pt, partopsep=0pt}
-\setlist[itemize]{itemsep=2pt, topsep=-1pt, parsep=0pt, partopsep=0pt}
-
-\newcommand{\sol}[1]{\marginnote{\href{#1}{\faYoutube}}}
 
 %--------------------------------------------------------------------------------------------------------------
 % pagestyles
 %--------------------------------------------------------------------------------------------------------------
 
-\newcommand{\klausur}{\textsuperscript{\textcolor{gray}{\textbf{K}}}}
-
 \fancyhf{}
 \fancyhead[L]{\theorganisation\\ \theauthor \\ \theemail}
 \fancyhead[R]{\thelogo}
-\fancyfoot[L]{\tiny%
-	Christians Social Media Kanäle:
-	\href{https://discord.gg/WYgECstu7T}{\faDiscord}
-	\href{https://www.facebook.com/chr.spannagel}{\faFacebook}
-	\href{https://github.com/dunkelmunkel}{\faGithub}
-	\href{https://www.instagram.com/dunkelmunkel}{\faInstagram}
-	\href{https://www.linkedin.com/in/christian-spannagel-31b7b4a1/}{\faLinkedin}
-	\href{https://scholar.social/@cspannagel}{\faMastodon}
-	\href{https://www.snapchat.com/add/spannagelc}{\faSnapchat}
-	\href{https://t.me/cspannagel}{\faTelegram}
-	\href{https://www.tiktok.com/@_cspannagel_}{\faTiktok}
-	\href{https://www.twitch.tv/cspannagel}{\faTwitch}
-	\href{https://twitter.com/dunkelmunkel}{\faTwitter}
-	\href{https://www.youtube.com/pharithmetik}{\faYoutube}\\
-	\tiny This document is subject to the Creative Commons Zero (CC0) License.}
-\fancyfoot[R]{Seite \thepage}
+\fancyfoot[C]{Seite \thepage}
 \fancypagestyle{docstyle}{%
 	\fancyhf{}
 	\renewcommand{\headrulewidth}{0pt}
-	\fancyfoot[R]{Seite \thepage}
+	\fancyfoot[C]{Seite \thepage}
 }
 \setlength{\parskip}{1 em} % fügt Leerzeile zwischen Absätzen ein
 \setlength{\parindent}{0 em}
 
-\definecolor{mkTeal}{RGB}{35,58,93}
 % hyperreferences
 \hypersetup{
 	colorlinks=true,
-	linkcolor=mkTeal,
-	citecolor=mkTeal,
-	urlcolor=mkTeal,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=blue,
 	pdftitle={CSSheet},
-	pdfpagemode=UseNone,
+	pdfpagemode=FullScreen,
 }
-
 
 % commands for metadata
 \author{Prof. Dr. Christian Spannagel}
@@ -139,11 +109,8 @@
 	\end{center}
 }
 \newcommand{\printsubtitle}{%
-	\pagenumbering{arabic}
-	\pagestyle{fancy}
 	\begin{center}
-		{\LARGE\textbf{\thetitle}}\par
-		{\large\textbf{\thesubtitle}}
+		{\Large\textbf{\thesubtitle}}
 	\end{center}
 }
 \newcommand{\printdate}{%
@@ -155,7 +122,27 @@
 % footer elements
 \newcommand{\printlicense}{%
 	\includegraphics[height=10mm]{cc-zero.png}\\
-	{\tiny \\[-0.3em]To create this document, we used \LaTeX{}.}
+	\tiny{This document is subject to the Creative Commons Zero (CC0) License.\\ To create this document, we used \LaTeX{}.}
+}
+
+\newcommand{\printsocials}{%
+	Christians Social Media Kanäle:\\
+	BeReal: \url{https://bere.al/cspannagel}\\
+	Bluesky: \url{https://bsky.app/profile/cspannagel.bsky.social}\\
+	Discord: \url{https://tinyurl.com/chrisp-discord}\\
+	Facebook: \url{https://www.facebook.com/chr.spannagel}\\
+	GitHub:  \url{https://github.com/dunkelmunkel}\\
+	Instagram: \url{https://www.instagram.com/dunkelmunkel/}\\
+	LinkedIn: \url{https://www.linkedin.com/in/christian-spannagel-31b7b4a1/}\\
+	Mastodon: \url{https://scholar.social/@cspannagel}\\
+	Snapchat: \url{https://www.snapchat.com/add/spannagelc}\\
+	Telegram: \url{https://t.me/cspannagel}\\
+	Tellonym: \url{https://tellonym.me/christian.spannagel}\\
+	TikTok: \url{https://www.tiktok.com/@_cspannagel_}\\
+	Threads: \url{https://www.threads.net/@dunkelmunkel}\\
+	Twitch: \url{https://www.twitch.tv/cspannagel}\\
+	X/Twitter: \url{https://twitter.com/dunkelmunkel}\\
+	Youtube: \url{https://www.youtube.com/pharithmetik}
 }
 
 
@@ -164,6 +151,8 @@
 	\addtocounter{Aufgabe}{1}%
 	\textbf{Aufgabe \theAufgabe{}%
 		\IfNoValueTF{#1}{}{ (#1)}}
+	
+	\vspace*{-0.5em}
 }{\medskip}
 
 \renewcommand{\labelenumi}{{\alph{enumi}})}
